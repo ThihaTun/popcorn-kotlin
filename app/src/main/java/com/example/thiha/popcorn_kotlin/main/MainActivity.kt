@@ -1,19 +1,19 @@
 package com.example.thiha.popcorn_kotlin.main
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.example.thiha.popcorn_kotlin.R
 import com.example.thiha.popcorn_kotlin.database.UserMovie
 import com.example.thiha.popcorn_kotlin.main.mvp.MainPresenter
 import com.example.thiha.popcorn_kotlin.main.mvp.view.MainView
 import com.example.thiha.popcorn_kotlin.main.mvp.view.MovieAdapter
+import com.example.thiha.popcorn_kotlin.moviedetail.MovieDetailActivity
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity(), MovieAdapter.onMovieClicked, MainView 
     }
 
     override fun onClick(userMovie: UserMovie) {
-        Log.d("Detail", "u clicked")
+        val intent = Intent(this, MovieDetailActivity::class.java)
+        intent.putExtra(MovieDetailActivity.EXTRA_USER_MOVIE, userMovie)
+        startActivity(intent)
     }
 }
