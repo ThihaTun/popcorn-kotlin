@@ -11,4 +11,8 @@ class ApiModule {
     @Singleton
     @Provides
     fun provideMovieClient(): MovieClient = MovieClient(BuildConfig.BASE_URL, BuildConfig.API_KEY)
+
+
+
+
 }
